@@ -43,8 +43,22 @@ export const DUMMY_VALUES = [
   },
 ];
 
-const USERS_ENDPOINT = "DUMMY";
+const USERS_ENDPOINT =
+  "https://react-native-course-368bd-default-rtdb.firebaseio.com";
+
+const createUser = async (newUser) => {
+  const users = await axios.post(USERS_ENDPOINT + "/expenses.json", newUser);
+  console.log(users.data);
+  //return;
+};
+
 const fetchUsers = async () => {
-  const users = await axios.get(USERS_ENDPOINT);
-  return;
+  const users = await axios.get(USERS_ENDPOINT + "/expenses.json");
+  console.log(users.data);
+  //return;
+};
+
+module.exports = {
+  createUser,
+  fetchUsers,
 };

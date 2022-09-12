@@ -1,17 +1,22 @@
+import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import IconButton from "../components/UI/IconButton";
 import Input from "../components/UI/Input";
 import { GlobalColors } from "../constants/colors";
+import { fetchUsers, createUser } from "../utils/http";
 
 export default ManageUsers = ({ route, navigation }) => {
+  const [user, setUser] = useState({ userName: "", email: "" });
   const isEditing = route?.params?.isEditing;
 
   const confirmCreateHandler = () => {
     console.log("confirmCreateHandler");
-    navigation.goBack();
+    createUser();
+    //fetchUsers();
+    //navigation.goBack();
   };
 
-  const confirmEditHandler = () => {
+  const confirmEditHandler = async () => {
     console.log("confirmEditHandler");
   };
 
